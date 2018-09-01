@@ -2,7 +2,9 @@ package com.meesho.communication.model;
 
 import java.util.Map;
 
-public abstract class CommunicationQueueObject extends com.meesho.queue.model.QueueObject{
+import com.meesho.queue.model.QueueObject;
+
+public abstract class CommunicationQueueObject extends QueueObject {
 	protected String type;
 	private final String templateIdSuccess;
 	private final String templateIdFailure;

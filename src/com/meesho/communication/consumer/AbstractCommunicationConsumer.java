@@ -20,14 +20,21 @@ public abstract class AbstractCommunicationConsumer implements IConsumer {
 		this.topicSecond = topicSecond;
 	}
 
+	protected abstract boolean validate(QueueObject queueObject);
+
 	@Override
 	public void consume() {
 		IQueueManager queueManager = QueueManager.getInstance();
 		QueueObject queueObject = queueManager.pollFromQueue(topic);
 		if (queueObject.validateData()) {
-			IChannelObject channelObject = getChannelObject(queueObject);
-			boolean success = channel.submit(channelObject);
-			if (!success) {
+			boolean isValid = validate(queueObject); // template pattern
+			if (isValid) {
+				IChannelObject channelObject = getChannelObject(queueObject);
+				boolean success = channel.submit(channelObject);
+				if (!success) {
+					queueManager.putInQueue(topicSecond, queueObject);
+				}
+			} else {
 				queueManager.putInQueue(topicSecond, queueObject);
 			}
 		}

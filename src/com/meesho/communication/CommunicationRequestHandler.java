@@ -6,7 +6,7 @@ import com.meesho.queue.QueueManager;
 import com.meesho.queue.model.QueueObject;
 import com.meesho.queue.model.QueueTopic;
 
-public class CommunicationRequestHandler implements IRequestHandler{
+public class CommunicationRequestHandler implements IRequestHandler {
 
 	private static IRequestHandler instance = new CommunicationRequestHandler();
 

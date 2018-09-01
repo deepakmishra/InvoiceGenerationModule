@@ -1,12 +1,11 @@
 package com.meesho.communication.consumer;
 
-import com.meesho.communication.channel.EmailChannel;
 import com.meesho.queue.model.QueueTopic;
 
-public abstract class RealtimeEmailConsumer extends AbstractCommunicationConsumer {
+public class RealtimeEmailConsumer extends EmailConsumer {
 
 	protected RealtimeEmailConsumer() {
-		super(QueueTopic.EMAIL_REALTIME, QueueTopic.EMAIL, EmailChannel.getInstance());
+		super(QueueTopic.EMAIL_REALTIME, QueueTopic.EMAIL);
 	}
 
 }

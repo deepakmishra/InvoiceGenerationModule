@@ -9,6 +9,7 @@ public class SmsQueueObject extends CommunicationQueueObject {
 
 	@Override
 	public boolean validateData() {
+		// TODO :: Verify SMS character count
 		return true;
 	}
 }
